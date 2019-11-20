@@ -84,9 +84,20 @@ h2 a, h2 a:active, h2 a:visited, h2 a:hover {
     background-color: #00000000;
 }
 
+.card-deck {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.card-deck::-webkit-scrollbar {
+    display: none;
+  }
+
 .card-deck .card {
-    min-width: 24rem;
-    max-width: 24rem;
+    min-width: 26rem;
+    max-width: 26rem;
 }
 
 @media (max-width: 460px) {
@@ -108,9 +119,6 @@ h2 a, h2 a:active, h2 a:visited, h2 a:hover {
 @media (min-width: 1200px) {
     .container{
         max-width: 960px;
-    } 
-    .container-cards{
-        max-width: 1140px
     }
 }
 

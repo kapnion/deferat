@@ -28,7 +28,7 @@
             </div>
         </div>
 
-    <div class="container">
+    <div class="container-fluid">
 
         @if (!String.IsNullOrWhiteSpace(Model.Tag))
         {
@@ -43,9 +43,8 @@
                 Nothing to see here!
             </div>
         }
-    </div>
-    <div class="container container-cards">
-        <div class="card-deck justify-content-center">
+
+        <div id="card-deck" class="card-deck flex-nowrap">
             @foreach (var post in Model.Posts)
             {
                 @await Html.PartialAsync("_PostCard", post)
@@ -70,3 +69,33 @@
 </div>
 
 </div>
+
+<script type="text/javascript">
+    var item = document.getElementById('card-deck');
+    
+
+    window.addEventListener('wheel', function(e) {
+
+        if(window.innerWidth < 575){
+            return true;
+        }
+
+        var x = e.clientX;
+        var y = e.clientY;
+
+        var bounds = item.getBoundingClientRect();
+  
+
+        if(x > bounds.x && x < (bounds.x + bounds.width) &&
+            y > bounds.y && y < (bounds.y + bounds.height) ){
+
+            if (e.deltaY > 0) {
+                item.scrollLeft += 100;
+            }
+            else {
+                item.scrollLeft -= 100;
+            }
+            e.preventDefault();
+        }
+    });
+</script>
